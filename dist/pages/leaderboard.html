@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App | Leaderboard!</title>
     <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="h-screen mx-auto bg-gray-100 w-10/12 p-24 pt-24">
         <h1 class="font-semibold text-2xl text-center my-6">Leaderboard</h1>
 
         <!-- This example requires Tailwind CSS v2.0+ -->
-        <div class="relative inline-block text-left pl-32 pb-10">
+        <div class="relative inline-block text-left pl-32 pb-10" x-data="{ open: false }">
             <div>
-            <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
+            <button type="button" @click="open = true" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
                 Time
                 <!-- Heroicon name: chevron-down -->
                 <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -25,24 +27,28 @@
             <!--
             Dropdown panel, show/hide based on dropdown state.
         
-            Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
+            Entering: ""
+                From: ""
+                To: ""
             Leaving: "transition ease-in duration-75"
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+            <div  x-show="open" x-transition:enter="transition ease-out duration-100"
+            x-transition:start="transform opacity-0 scale-95" x-transition:end="transform opacity-100 scale-100"
+            @click.away="open = false" 
+            class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100" 
+            role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             
-            <div class="py-1">
+            <div class="py-1"  role="button">
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Monthly</a>
             </div>
             
-            <div class="py-1">
+            <div class="py-1"  role="button">
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Weekly</a>
             </div>
 
-            <div class="py-1">
+            <div class="py-1 sm-only"  role="button">
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Daily</a>
             </div>
             </div>
@@ -155,7 +161,7 @@
   
     <style>
         body{
-            font-family: 'Quicksand';
+            font-family: 'Quicksand', sans-serif;
         }
         .half{
             background-image: url('../img/half.jpg');
@@ -164,5 +170,6 @@
             background-position-x: 22%;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </body>
 </html>

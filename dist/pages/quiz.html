@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App | Quiz ongoing!</title>
+    <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="h-screen bg-gray-50 divide-y-2 lg:flex">
+        <!--Here begins the question and answers card-->
+        <div class="mx-auto p-10 bg-gray-100 rounded-xl mt-32 w-10/12 mb-auto h-max shadow-inner">
+            <h1 class="text-center px-4 py-2 bg-gray-200 w-max mx-auto rounded-full shadow-inner">Question 1</h1>
+            <h2 class="text-xl font-semibold text-center my-6">What is defined as the document commonly written in HyperText Markup Language (HTML) that is accessible through the Internet or other network using an Internet browser?</h2>
+            <div class="grid grid-cols-2 gap-5 mx-auto">
+                <label class=" labl">
+                    <input type="radio" name="ans" id="" class="appearance-none">
+                    <div class=" px-6 py-2 bg-white transition duration-500 shadow hover:shadow-lg rounded-full"><h3>Web page</h3></div>
+                </label>
+                <label class=" labl">
+                    <input type="radio" name="ans" id="" class="appearance-none">
+                    <div class=" px-6 py-2 bg-white transition duration-500 shadow hover:shadow-lg rounded-full"><h3>Website</h3></div>
+                </label>
+                <label class=" labl">
+                    <input type="radio" name="ans" id="" class="appearance-none">
+                    <div class=" px-6 py-2 bg-white transition duration-500 shadow hover:shadow-lg rounded-full"><h3>Internet</h3></div>
+                </label>
+                <label class=" labl">
+                    <input type="radio" name="ans" id="" class="appearance-none">
+                    <div class=" px-6 py-2 bg-white transition duration-500 shadow hover:shadow-lg rounded-full"><h3>Web</h3></div>
+                </label>
+            </div>
+        </div>
+        <!--Here ends the question and answers card-->
+    </div>
+    <style>
+        body{
+            font-family: 'Quicksand', sans-serif;
+        }
+        .labl > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
+            background-color: #ffe8d9;
+            border: 1px solid #ff6600;
+        }
+    </style>
+</body>
+</html>
