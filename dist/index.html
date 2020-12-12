@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="./css/tailwind.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-      body{
-          font-family: 'Quicksand', sans-serif;
-      }
+    <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+    <script src="./js/auto-interval.js"></script>
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <title>Quiz App</title>
+  <style>
+    body{
+      font-family: 'Quicksand', sans-serif;
+    }
   </style>
 </head>
+
 <body>
-    <div class="h-screen bg-gray-50">
+    <div class="bg-gray-50 h-full">
   
         <nav class="bg-gray-800" x-data="{ open: false }">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -127,7 +130,35 @@
               </div>
             </div>
           </nav>
+
+          <header class="w-full h-90 block">
+
+            <div class="bg-teal-400" 
+              x-data="{ activeSlide: 1, 
+                add() { 
+                    if(this.activeSlide < 3){
+                      this.activeSlide++ 
+                    }else{
+                      this.activeSlide = 1
+                    }
+              } } "
+                x-alpine-interval="{ callback: 'add', timer: 3000 }"
+            >
+              <div class="w-full h-full py-20 bg-green-400" x-show="activeSlide == 1">
+                <h1 class="text-2xl text-white font-bold text-center py-32">Slide 1</h1>
+              </div>
+              <div class="w-full h-full py-20 bg-blue-400" x-show="activeSlide == 2">
+                <h1 class="text-2xl text-white font-bold text-center py-32">Slide 2</h1>
+
+              </div>
+              <div class="w-full h-full py-20 bg-red-400" x-show="activeSlide == 3">
+                <h1 class="text-2xl text-white font-bold text-center py-32">Slide 3</h1>
+              </div>
+            </div>
+          </header>
+
         <main>
+          
             <div class="grid md:grid-cols-2 text-center gap-4 lg:grid-cols-4 grid-cols-1 p-10 text-center font-sans">
                 <!--Card starts here-->
                 <div class="rounded-xl uppercase bg-white text-gray-900 overflow-hidden w-full lg:h-max lg:w-56 bg-gray-50 shadow-lg mx-auto">
@@ -141,11 +172,13 @@
                     <button class="px-4 py-4 w-full mt-2 focus:outline-none hover:bg-blue-600 text-white bg-blue-500">Play Now!</button>
                 </div>
                 <!--Card starts here-->
-        </div>
+              </div>
     </main>
+    
     <footer class="bg-gray-700 p-10 mt-auto">
       <h1 class="text-center text-white">&copy;Copyright-Title 2020</h1>
     </footer>
-      <script src="./js/alpine.min.js" defer></script>
+    
+
 </body>
 </html>
